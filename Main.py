@@ -21,15 +21,15 @@ class linkedList:
             print("The Linked List is empty")
         while temp.data!=None:
             if temp.data==prev:
-            tempNode=temp.next
-            temp.next=midNode
-            midNode.next=tempNode
-            break
-        elif temp.next==None:
-            print("%d not in the linked list" % prev)
-            break
-        else:
-            temp=temp.next
+                tempNode=temp.next
+                temp.next=midNode
+                midNode.next=tempNode
+                break
+            elif temp.next==None:
+                print("%d not in the linked list" % prev)
+                break
+            else:
+                temp=temp.next
     def deleteLast(self):
         temp=self.head
         if self.head==None:
