@@ -57,10 +57,11 @@ class linkedList:
                 temp=temp.next
         if temp==None:
             print("No value found")
-            else:
-                prev.next=temp.next
-            print(d, 'was deleted')
-            del temp
+        else:
+            prev.next=temp.next
+            
+        print(d, 'was deleted')
+        del temp
     def display(self):
         temp=self.head
         
