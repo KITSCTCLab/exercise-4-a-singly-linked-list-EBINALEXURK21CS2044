@@ -76,7 +76,7 @@ class linkedList:
         
 list1=linkedList()
 while (1):
-    print("\nOptions:\n1. Add Data\n2. Insert After\n3. Delete End Data\n4. Delete specified data\n5. Display\n6. Exi
+    print("\nOptions:\n1. Add Data\n2. Insert After\n3. Delete End Data\n4. Delete specified data\n5. Display\n6. Exit")
     userch=int(input("Enter your choice: "))
     if userch==1:
         data=int(input("Enter data to insert: "))
