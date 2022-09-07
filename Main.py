@@ -1,74 +1,101 @@
-from typing import Optional
-
-
-class Node:
-    """
-    Provide necessary documentation
-    """
-    def __init__(self, data=None, next=None):
-        """
-        Provide necessary documentation
-        """
-        self.data = data
-        self.next = next
-
-
-class LinkedList:
-    """
-    Provide necessary documentation
-    """
+class node:
+    def __init__(self,x):
+        self.data=x
+        self.next=None
+class linkedList:
     def __init__(self):
-        """
-        Initialize the head
-        """
-        self.head = None
-
-    def insert_at_end(self, data):
-        """
-        Insert node at end of the list
-        :param data: integer data that will be used to create a node
-        """
-        # Write code here
-
-    def status(self):
-        """
-        It prints all the elements of list.
-        """
-        # write code here
-
-
-class Solution:
-    """
-    Provide necessary documentation
-    """
-    def addTwoNumbers(self, first_list: Optional[LinkedList], second_list: Optional[LinkedList]) -> Optional[LinkedList]:
-        """
-        :param first_list: Linkedlist with non-negative integers
-        :param second_list: Linkedlist with non-negative integers
-        :return: returns the sum as a linked list
-        """
-        # Write code here
+        self.head=None
+    def append(self,x):
+        newNode=node(x)
+        if self.head is None:
+            self.head=newNode
+            return
+        temp=self.head
+        while temp.next!=None:
+            temp=temp.next
+        temp.next=newNode
+    def appendAfter(self,prev,x):
+        temp=self.head
+        midNode=node(x)
+        if temp is None:
+            print("The Linked List is empty")
+        while temp.data!=None:
+            if temp.data==prev:
+            tempNode=temp.next
+            temp.next=midNode
+            midNode.next=tempNode
+            break
+        elif temp.next==None:
+            print("%d not in the linked list" % prev)
+            break
+        else:
+            temp=temp.next
+    def deleteLast(self):
+        temp=self.head
+        if self.head==None:
+            print("Empty list")
+            return
+        elif self.head.next==None:
+            print("The deleted data is: ",self.head.data)
+            del self.head
+            self.head=None
+            return
+        while temp.next!=None:
+            prev=temp
+            temp=temp.next
+        prev.next=None
+        
+        print("The data deleted is: ",temp.data)
+        del temp
+    def deleteSpec(self,d):
+        temp=self.head
+        if self.head==d:
+            self.head=self.head.next
+        else:
+            while temp!=None and temp.data!=d:
+                prev=temp
+                temp=temp.next
+        if temp==None:
+            print("No value found")
+            else:
+                prev.next=temp.next
+            print(d, 'was deleted')
+            del temp
+    def display(self):
+        temp=self.head
+        
+        if temp==None:
+            print("Empty Linked List")
+            return
+        while temp.next!=None:
+            print(temp.data, end=" --> ")
+            temp=temp.next
+        print(temp.data, end=" --> ")
+        print(None)
+        
+list1=linkedList()
+while (1):
+    print("\nOptions:\n1. Add Data\n2. Insert After\n3. Delete End Data\n4. Delete specified data\n5. Display\n6. Exi
+    userch=int(input("Enter your choice: "))
+    if userch==1:
+        data=int(input("Enter data to insert: "))
+        list1.append(data)
+    elif userch==2:
+        list1.display()
+        prev=int(input("After which data would you like to insert: "))
+        data=int(input("Enter data to insert: "))
+        list1.appendAfter(prev,data)
+    elif userch==3:
+        list1.deleteLast()
+    elif userch==4:
+        data=int(input("Enter data to delete: "))
+        list1.deleteSpec(data)
+    elif userch==5:
+        list1.display()
+    elif userch==6:
+        print("Thank You!")
+        break
+    else:
+        print("Sorry, Option not Found")
         
         
-
-# Do not edit the following code      
-# Create an instance for LinkedList
-first_list = LinkedList()
-# Create an another instance for LinkedList
-second_list = LinkedList()
-# Read data for first list
-data_for_first_list = list(map(int, input().strip().split(" ")))
-# Add data at the end of first_list
-for data in data_for_first_list:
-    first_list.insert_at_end(data)
-# Read data for second list
-data_for_second_list = list(map(int, input().strip().split(" ")))
-# Add data at the end of second_list
-for data in data_for_second_list:
-    second_list.insert_at_end(data)
-# Create an instance for Solution
-solution = Solution()
-# Pass first_list and second_list to addTwoNumbers, which returns a new linked list
-new_list = solution.addTwoNumbers(first_list, second_list)
-# Display the status of new_list
-new_list.status()
